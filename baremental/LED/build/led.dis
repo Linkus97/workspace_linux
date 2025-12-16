@@ -1,0 +1,122 @@
+
+build/./led.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+87800000 <_start>:
+87800000:	eb000000 	bl	87800008 <gpio1_03_init>
+87800004:	ea00000f 	b	87800048 <loop>
+
+87800008 <gpio1_03_init>:
+87800008:	e59f003c 	ldr	r0, [pc, #60]	; 8780004c <loop+0x4>
+8780000c:	e3a01303 	mov	r1, #201326592	; 0xc000000
+87800010:	e5801000 	str	r1, [r0]
+87800014:	e59f0034 	ldr	r0, [pc, #52]	; 87800050 <loop+0x8>
+87800018:	e3a01005 	mov	r1, #5
+8780001c:	e5801000 	str	r1, [r0]
+87800020:	e59f002c 	ldr	r0, [pc, #44]	; 87800054 <loop+0xc>
+87800024:	e59f102c 	ldr	r1, [pc, #44]	; 87800058 <loop+0x10>
+87800028:	e5801000 	str	r1, [r0]
+8780002c:	e59f0028 	ldr	r0, [pc, #40]	; 8780005c <loop+0x14>
+87800030:	e3a01008 	mov	r1, #8
+87800034:	e5801000 	str	r1, [r0]
+87800038:	e59f0020 	ldr	r0, [pc, #32]	; 87800060 <loop+0x18>
+8780003c:	e3a01000 	mov	r1, #0
+87800040:	e5801000 	str	r1, [r0]
+87800044:	e12fff1e 	bx	lr
+
+87800048 <loop>:
+87800048:	eafffffe 	b	87800048 <loop>
+8780004c:	020c406c 	andeq	r4, ip, #108	; 0x6c
+87800050:	020e0068 	andeq	r0, lr, #104	; 0x68
+87800054:	020e02f4 	andeq	r0, lr, #244, 4	; 0x4000000f
+87800058:	000010b0 	strheq	r1, [r0], -r0
+8780005c:	0209c004 	andeq	ip, r9, #4
+87800060:	0209c000 	andeq	ip, r9, #0
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00001e41 	andeq	r1, r0, r1, asr #28
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000014 	andeq	r0, r0, r4, lsl r0
+  10:	412d3705 	teqmi	sp, r5, lsl #14
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	Address 0x000000000000001c is out of bounds.
+
+
+Disassembly of section .debug_aranges:
+
+00000000 <.debug_aranges>:
+   0:	0000001c 	andeq	r0, r0, ip, lsl r0
+   4:	00000002 	andeq	r0, r0, r2
+   8:	00040000 	andeq	r0, r4, r0
+   c:	00000000 	andeq	r0, r0, r0
+  10:	87800000 	strhi	r0, [r0, r0]
+  14:	00000064 	andeq	r0, r0, r4, rrx
+	...
+
+Disassembly of section .debug_info:
+
+00000000 <.debug_info>:
+   0:	0000005c 	andeq	r0, r0, ip, asr r0
+   4:	00000002 	andeq	r0, r0, r2
+   8:	01040000 	mrseq	r0, (UNDEF: 4)
+   c:	00000000 	andeq	r0, r0, r0
+  10:	87800000 	strhi	r0, [r0, r0]
+  14:	87800064 	strhi	r0, [r0, r4, rrx]
+  18:	2e64656c 	cdpcs	5, 6, cr6, cr4, cr12, {3}
+  1c:	682f0073 	stmdavs	pc!, {r0, r1, r4, r5, r6}	; <UNPREDICTABLE>
+  20:	2f656d6f 	svccs	0x00656d6f
+  24:	6b6e696c 	blvs	1b9a5dc <_start-0x85c65a24>
+  28:	6c2f7375 	stcvs	3, cr7, [pc], #-468	; fffffe5c <__bss_end__+0x787efdf8>
+  2c:	78756e69 	ldmdavc	r5!, {r0, r3, r5, r6, r9, sl, fp, sp, lr}^
+  30:	726f772f 	rsbvc	r7, pc, #12320768	; 0xbc0000
+  34:	6170736b 	cmnvs	r0, fp, ror #6
+  38:	6c5f6563 	cfldr64vs	mvdx6, [pc], {99}	; 0x63
+  3c:	78756e69 	ldmdavc	r5!, {r0, r3, r5, r6, r9, sl, fp, sp, lr}^
+  40:	7261622f 	rsbvc	r6, r1, #-268435454	; 0xf0000002
+  44:	6e656d65 	cdpvs	13, 6, cr6, cr5, cr5, {3}
+  48:	2f6c6174 	svccs	0x006c6174
+  4c:	0044454c 	subeq	r4, r4, ip, asr #10
+  50:	20554e47 	subscs	r4, r5, r7, asr #28
+  54:	32205341 	eorcc	r5, r0, #67108865	; 0x4000001
+  58:	2e34322e 	cdpcs	2, 3, cr3, cr4, cr14, {1}
+  5c:	80010030 	andhi	r0, r1, r0, lsr r0
+
+Disassembly of section .debug_abbrev:
+
+00000000 <.debug_abbrev>:
+   0:	10001101 	andne	r1, r0, r1, lsl #2
+   4:	12011106 	andne	r1, r1, #-2147483647	; 0x80000001
+   8:	1b080301 	blne	200c14 <_start-0x875ff3ec>
+   c:	13082508 	movwne	r2, #34056	; 0x8508
+  10:	00000005 	andeq	r0, r0, r5
+
+Disassembly of section .debug_line:
+
+00000000 <.debug_line>:
+   0:	00000049 	andeq	r0, r0, r9, asr #32
+   4:	001c0002 	andseq	r0, ip, r2
+   8:	01020000 	mrseq	r0, (UNDEF: 2)
+   c:	000d0efb 	strdeq	r0, [sp], -fp
+  10:	01010101 	tsteq	r1, r1, lsl #2
+  14:	01000000 	mrseq	r0, (UNDEF: 0)
+  18:	00010000 	andeq	r0, r1, r0
+  1c:	2e64656c 	cdpcs	5, 6, cr6, cr4, cr12, {3}
+  20:	00000073 	andeq	r0, r0, r3, ror r0
+  24:	05000000 	streq	r0, [r0, #-0]
+  28:	80000002 	andhi	r0, r0, r2
+  2c:	322f1787 	eorcc	r1, pc, #35389440	; 0x21c0000
+  30:	2f312f2f 	svccs	0x00312f2f
+  34:	2f2f312f 	svccs	0x002f312f
+  38:	312f2f31 	teqcc	pc, r1, lsr pc	; <UNPREDICTABLE>
+  3c:	31302f2f 	teqcc	r0, pc, lsr #30
+  40:	332e6503 	teqcc	lr, #12582912	; 0xc00000
+  44:	33322f33 	teqcc	r2, #51, 30	; 0xcc
+  48:	01000202 	tsteq	r0, r2, lsl #4
+  4c:	Address 0x000000000000004c is out of bounds.
+
