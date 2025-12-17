@@ -31,24 +31,20 @@ DUMP := $(patsubst %.s,$(BUILD_DIR)/%.dis,$(SRCS))
 
 # 默认规则：.bin -> dump
 $(BUILD_DIR)/%.dis: $(BUILD_DIR)/%.elf
-	@echo "Objdump: $< -> $@"
-	@$(DP) $(DPFLAGS) $< > $@
+	$(DP) $(DPFLAGS) $< > $@
 
 # 默认规则：.s -> .bin
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf
-	@echo "Objcopy: $< -> $@"
-	@$(CP) $(CPFLAGS) $< $@
+	$(CP) $(CPFLAGS) $< $@
 
 # 规则：.o -> .elf
 $(BUILD_DIR)/%.elf: $(BUILD_DIR)/%.o
-	@echo "Linking: $< -> $@"
-	@$(LD) $(LDFLAGS) $< -o $@
+	$(LD) $(LDFLAGS) $< -o $@
 
 # 规则：.s -> .o
 $(BUILD_DIR)/%.o: %.s
-	@echo "Assembling: $< -> $@"
 	@mkdir -p $(dir $@)
-	@$(CC) $(ASFLAGS) $< -o $@
+	$(CC) $(ASFLAGS) $< -o $@
 
 .PHONY: all
 all: $(BINS) $(DUMP)
@@ -73,4 +69,5 @@ debug: $(OBJS) $(ELFS) $(BINS) $(DUMP)
 clean:
 	@echo "Clean build files..."
 	@rm -rf $(BUILD_DIR)
+	@rm -rf load.imx
 	@echo "Done."
